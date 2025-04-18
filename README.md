@@ -88,12 +88,72 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 ---
 
 ## Project Structure
-- `src/` — Source code (controllers, models, lib, etc.)
-- `drizzle/` — Generated migration files
-- `scripts/` — DB and seed scripts
-- `Dockerfile` — Multi-stage build for dev/prod
-- `docker-compose.yml` — Local DB (pgvector)
-- `docker-compose.prod.yml` — App + DB for production
+```
+ai-search-engine/
+├── src/                    # Source code
+│   ├── controllers/        # API route handlers
+│   │   ├── aiSearchControllers.ts
+│   │   ├── contextSearchControllers.ts
+│   │   ├── generateControllers.ts
+│   │   └── userController.ts
+│   ├── models/            # Database models
+│   │   ├── searchResult.ts
+│   │   └── user.ts
+│   ├── middleware/        # Request middleware
+│   │   └── authMiddleware.ts
+│   ├── lib/              # Utility functions
+│   │   └── database.ts
+│   ├── config/           # Configuration
+│   │   └── env.ts
+│   └── index.ts          # Main application entry
+├── drizzle/              # Database migrations
+│   ├── meta/            # Migration metadata
+│   └── *.sql            # SQL migration files
+├── scripts/             # Database scripts
+│   ├── clean-db.ts
+│   └── seeds/
+│       └── admin-user.ts
+├── tests/               # Test files
+│   └── __test__/
+├── .env                 # Environment variables
+├── docker-compose.yml   # Local development
+├── docker-compose.prod.yml # Production
+├── Dockerfile          # Docker configuration
+└── package.json        # Project dependencies
+```
+
+## API Endpoints
+
+### Public Endpoints
+- `GET /` - Welcome endpoint
+  - Returns: Welcome message
+  - No authentication required
+
+- `POST /register` - User registration
+  - Body: `{ email: string, password: string, name: string }`
+  - Returns: `{ id: string, email: string, name: string }`
+  - No authentication required
+
+- `POST /login` - User login
+  - Body: `{ email: string, password: string }`
+  - Returns: `{ token: string }`
+  - No authentication required
+
+### Protected Endpoints (Require JWT Token)
+- `GET /search` - AI-powered search
+  - Query params: `query: string`
+  - Headers: `Authorization: Bearer <token>`
+  - Returns: Search results with AI analysis
+
+- `GET /generate` - Content generation
+  - Query params: `query: string, url: string`
+  - Headers: `Authorization: Bearer <token>`
+  - Returns: Generated content based on URL and query
+
+- `GET /context-search` - Context-aware search
+  - Query params: `query: string, limit?: number`
+  - Headers: `Authorization: Bearer <token>`
+  - Returns: Contextual search results with semantic analysis
 
 ---
 
