@@ -1,0 +1,2 @@
+CREATE INDEX "content_vector_idx" ON "SearchResult" USING ivfflat ("contentVector" vector_l2_ops);--> statement-breakpoint
+CREATE INDEX "analysis_vector_idx" ON "SearchResult" USING ivfflat ("analysisVector" vector_l2_ops);

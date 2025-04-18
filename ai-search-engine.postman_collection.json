@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "f9b531c9-ee3e-44dc-87c1-705a3e4828b1",
+		"name": "ai-search-engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16636992",
+		"_collection_link": "https://teambibro.postman.co/workspace/ai-search-engine~b8112528-5fd3-48cd-aa63-fd7921d8a4ba/collection/16636992-f9b531c9-ee3e-44dc-87c1-705a3e4828b1?action=share&source=collection_link&creator=16636992"
+	},
+	"item": [
+		{
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bibrata@gmail.com\",\n    \"password\": \"123\",\n    \"name\":  \"bibrata\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"1@gmail.com\",\n    \"password\": \"password1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "custom search",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "generate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MTA0NTNlNi0yZGNjLTQ4ZGYtYjBmNS02Y2JkYzc0MDNmZTYiLCJlbWFpbCI6IjFAZ21haWwuY29tIiwiaWF0IjoxNzQ1MDE0ODc5LCJleHAiOjE3NDU2MTk2Nzl9.ounvFyYb7PU4QMN1nqTH1dyzetC-EhwfcdTBO_Gk6fg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5050/generate?query=https://en.wikipedia.org/wiki/Siliguri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"generate"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "https://en.wikipedia.org/wiki/Siliguri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "!! New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MTA0NTNlNi0yZGNjLTQ4ZGYtYjBmNS02Y2JkYzc0MDNmZTYiLCJlbWFpbCI6IjFAZ21haWwuY29tIiwiaWF0IjoxNzQ1MDE1NDExLCJleHAiOjE3NDU2MjAyMTF9.9B8r604VVJjgG8nzxif9jzNZfojcyqwRcyXpvi3AdzU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5050/context-search?query=why siliguri is popular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"context-search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "why siliguri is popular"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
